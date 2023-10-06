@@ -32,7 +32,23 @@ jobs:
             false
             true
             true
-
+  fail-with-bash-with-options:
+    shell: bash -eo pipefail
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - run:
+          name: "Say hello"
+          command: "echo Hello, World!"
+      - run:
+          name: "Should pass"
+          command: "true"
+      - run:
+          name: "Should fail"
+          command: |
+            false
+            true
+            true
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
@@ -40,3 +56,4 @@ workflows:
     jobs:
       - fail-with-default-shell
       - fail-with-bare-bash
+      - fail-with-bash-with-options
