@@ -28,7 +28,10 @@ jobs:
           command: "true"
       - run:
           name: "Should fail"
-          command: "false"
+          command: |
+            false
+            true
+            true
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
